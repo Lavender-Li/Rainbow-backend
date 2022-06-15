@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
-// 建立Class一定要让它属于CameraActivity父类，即使用不到camera功能。不然没法用BaseLoaderCallback初始化OpenCV库
 public class ColorPixelDetectionActivity extends CameraActivity implements View.OnTouchListener {
     private static final String  TAG              = "PixelDetect::Activity";
 
@@ -57,12 +56,7 @@ public class ColorPixelDetectionActivity extends CameraActivity implements View.
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS: {
                     Log.i(TAG, "OpenCV loaded successfully");
-//                    sample_img = Imgcodecs.imread(Environment.getExternalStorageDirectory()
-//                            .getAbsolutePath()+"/DCIM/paint.png", IMREAD_COLOR);
                     Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.paint);
-//                    Bitmap bitmap = BitmapFactory.decodeFile
-//                            (Environment.getExternalStorageDirectory()
-//                                   .getAbsolutePath()+"/DCIM/paint.png");
                     sample_img = new Mat();
                     Utils.bitmapToMat(bitmap, sample_img);
                 } break;
@@ -115,8 +109,6 @@ public class ColorPixelDetectionActivity extends CameraActivity implements View.
 
     @SuppressLint("ClickableViewAccessibility")
     public boolean onTouch (View v, MotionEvent event) {
-        // event.getX / getY 获得的是基于ImageView大小的点击坐标
-        // 所以要换算成基于图片本身的坐标 才能获得正确的像素点
         int cols = sample_img.cols(); // width
         int rows = sample_img.rows(); // height
         int view_cols = sample_img_view.getMeasuredWidth();
@@ -140,8 +132,6 @@ public class ColorPixelDetectionActivity extends CameraActivity implements View.
         if ((x < 0) || (y < 0) || (x > cols) || (y > rows)) return false;
         // get pixel point BGR (byte)
         byte[] TouchedPixel = new byte[sample_img.channels()];
-        // notice: get(rows, cols, xxxx)
-        // so it should be (y,x)!!! not (x,y)
         sample_img.get(y, x, TouchedPixel);
         // transform BGR(byte) to BGR(int)
         int PixelR = TouchedPixel[0]&0xff;
@@ -153,13 +143,6 @@ public class ColorPixelDetectionActivity extends CameraActivity implements View.
         BTextView.setText( "B = " + String.valueOf(PixelB));
         ColorNameTextView.setText("This color is: " + getColorFromRGB(PixelR, PixelG, PixelB));
         return false; // don't need subsequent touch events
-        // comment: When reading the image with imread(), the Mat value point is organized in the
-        //          sequence of "B-G-R"; but when using BitmapFactory.decodeResource
-        //          + Utils.bitmapToMat, the sequence is "R-G-B".
-
-        //FileRead: imread() is more concise to code, but I met with a bug: only .png can be read.
-        //          The function can't receive other format and will return a 0x0 Mat.
-        //          Thus I choose to use bitmapToMat() here.
     }
 
     /** Initialize color list */
@@ -168,7 +151,6 @@ public class ColorPixelDetectionActivity extends CameraActivity implements View.
     static {
         ColorName.put("F0F8FF", "AliceBlue");
         ColorName.put("FAEBD7", "AntiqueWhite");
-//        ColorName.put("00FFFF", "Aqua");
         ColorName.put("7FFFD4", "Aquamarine");
         ColorName.put("F0FFFF", "Azure");
         ColorName.put("F5F5DC", "Beige");
@@ -211,7 +193,6 @@ public class ColorPixelDetectionActivity extends CameraActivity implements View.
         ColorName.put("B22222", "FireBrick");
         ColorName.put("FFFAF0", "FloralWhite");
         ColorName.put("228B22", "ForestGreen");
-//        ColorName.put("FF00FF", "Fuchsia");
         ColorName.put("DCDCDC", "Gainsboro");
         ColorName.put("F8F8FF", "GhostWhite");
         ColorName.put("FFD700", "Gold");
