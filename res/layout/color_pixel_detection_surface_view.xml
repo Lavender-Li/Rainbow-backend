@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ColorPixelDetectionActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rainbow"
+        android:textSize="35sp"
+        android:textColor="#ffffff"
+        android:background="#1160ee"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"/>
+
+    <ImageView
+        android:id="@+id/sample_img_view"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitCenter"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="30dp"
+        android:adjustViewBounds="true"
+        android:focusable="true"
+        android:src="@drawable/paint"/>
+
+    <TextView
+        android:id="@+id/pixel_color_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="This color is: ---"
+        android:textSize="25sp"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/pixel_r_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="R: ---"
+        android:textSize="25sp"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/pixel_g_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="G: ---"
+        android:textSize="25sp"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/pixel_b_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="B: ---"
+        android:textSize="25sp"
+        android:textColor="#000000"/>
+
+</LinearLayout>
