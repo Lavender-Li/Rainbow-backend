@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainPage">
+
+<!-- MainPage的界面。不要修改模块的id -->
+
+<!-- 上传本地图片按钮-->
+    <Button
+        android:id="@+id/image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="20dp"
+        android:text="Upload Local Image" />
+<!-- 拍照上传按钮-->
+    <Button
+        android:id="@+id/camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take photo from Camera"
+        android:padding="20dp"
+        android:layout_gravity="center"/>
+<!--拍的照片会显示在这里-->
+    <ImageView
+        android:id="@+id/photo_iv"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="6dp" />
+<!--上传的图片会显示在这里-->
+    <ImageView
+        android:id="@+id/camere_iv"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="6dp"
+        />
+<!--理论上是开始测试的按钮，点了会跳转到测试界面。-->
+<!--但是不知道为啥，上传图片后软件会自动跳转，点这个按钮反而会闪退。-->
+<!--后端代码对这个button设置了依赖，所以没有删除这个按钮，只是把它设置为invisible。    -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:onClick="startDetection"
+        android:visibility="invisible"/>
+</LinearLayout>
