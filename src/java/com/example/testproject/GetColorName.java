@@ -829,7 +829,7 @@ public class GetColorName {
         ColorName.put("0652ff", "electric blue");
         ColorName.put("045c5a", "dark turquoise");
         ColorName.put("5729ce", "blue purple");
-        ColorName.put("069af3", "azurColorName.put(e");
+        ColorName.put("069af3", "azure");
         ColorName.put("ff000d", "bright red");
         ColorName.put("f10c45", "pinkish red");
         ColorName.put("5170d7", "cornflower blue");
