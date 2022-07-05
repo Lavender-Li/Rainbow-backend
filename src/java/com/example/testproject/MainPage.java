@@ -4,8 +4,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -33,10 +36,14 @@ import java.io.IOException;
 
 public class MainPage extends Activity {
 
+    private TextView title;
+    private TextView subtitle;
+    private TextView upload_img_text;
+    private TextView take_photo_text;
     private Button cameraBt;
     private Button photoBt;
-    private ImageView cameraIv;
-    private ImageView photoIv;
+//    private ImageView cameraIv;
+//    private ImageView photoIv;
     private String TAG = "tag";
     byte buff[] = new byte[125*250];
     Uri uri_buff;
@@ -54,11 +61,15 @@ public class MainPage extends Activity {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
         }
-        Log.i("getFilesDir()", String.valueOf(getFilesDir()));
-        Log.i("getCacheDir()", String.valueOf(getCacheDir()));
-        Log.i("ExtStorageDirectory", String.valueOf(Environment.getExternalStorageDirectory()));
-        Log.i("getExternalFilesDir()",String.valueOf(getExternalFilesDir("")));
-        Log.i("getExternalCacheDir()", String.valueOf(getExternalCacheDir()));
+        AssetManager manager = getAssets();
+        title = findViewById(R.id.title);
+        subtitle = findViewById(R.id.subtitle);
+        upload_img_text = findViewById(R.id.upload_img_text);
+        take_photo_text = findViewById(R.id.take_photo_text);
+        title.setTypeface(Typeface.createFromAsset(manager, "TCM_____.TTF"));
+        subtitle.setTypeface(Typeface.createFromAsset(manager, "TCM_____.TTF"));
+        upload_img_text.setTypeface(Typeface.createFromAsset(manager, "TCM_____.TTF"));
+        take_photo_text.setTypeface(Typeface.createFromAsset(manager, "TCM_____.TTF"));
         initView();
     }
 
@@ -75,8 +86,8 @@ public class MainPage extends Activity {
     private void initView() {
         cameraBt = findViewById(R.id.camera_button);
         photoBt = findViewById(R.id.image_button);
-        cameraIv = findViewById(R.id.camere_iv);
-        photoIv = findViewById(R.id.photo_iv);
+//        cameraIv = findViewById(R.id.camere_iv);
+//        photoIv = findViewById(R.id.photo_iv);
         cameraBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +122,7 @@ public class MainPage extends Activity {
                         //将拍摄的照片显示出来
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(ImageUri));
                         buff = Bitmap2Bytes(bitmap);
-                        cameraIv.setImageBitmap(bitmap);
+                        // cameraIv.setImageBitmap(bitmap);
                         uri_buff = ImageUri;
                         Intent mIntent = new Intent();
                         mIntent.putExtra("image", uri_buff.toString());
@@ -129,7 +140,7 @@ public class MainPage extends Activity {
                         Uri uri_photo = data.getData();
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri_photo));
                         uri_buff = uri_photo;
-                        photoIv.setImageBitmap(bitmap);
+                        // photoIv.setImageBitmap(bitmap);
                         Intent mIntent = new Intent();
                         mIntent.putExtra("image", uri_buff.toString());
                         mIntent.setClass(MainPage.this, ColorDetectionActivity.class);
