@@ -3,41 +3,84 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/background"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainPage">
 
 <!-- MainPage的界面。不要修改模块的id -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="Rainbow"
+        android:textSize="43sp"
+        android:textColor="#444444"/>
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="70dp"
+        android:text="Make your life colorful."
+        android:textSize="18sp"
+        android:textColor="#444444"/>
 
 <!-- 上传本地图片按钮-->
-    <Button
-        android:id="@+id/image_button"
+    <TextView
+        android:id="@+id/upload_img_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:padding="20dp"
-        android:text="Upload Local Image" />
-<!-- 拍照上传按钮-->
+        android:layout_marginBottom="10dp"
+        android:text="Upload Local Image"
+        android:textColor="#444444"
+        android:textSize="22sp"
+        />
     <Button
-        android:id="@+id/camera_button"
+        android:id="@+id/image_button"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/image_button"
+        />
+<!-- 拍照上传按钮-->
+    <TextView
+        android:id="@+id/take_photo_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take photo from Camera"
-        android:padding="20dp"
-        android:layout_gravity="center"/>
-<!--拍的照片会显示在这里-->
-    <ImageView
-        android:id="@+id/photo_iv"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="6dp" />
-<!--上传的图片会显示在这里-->
-    <ImageView
-        android:id="@+id/camere_iv"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="6dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:paddingTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:text="Take A Photo"
+        android:textColor="#444444"
+        android:textSize="22sp"
         />
+    <Button
+        android:id="@+id/camera_button"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/camera_button"
+        />
+<!--&lt;!&ndash;拍的照片会显示在这里&ndash;&gt;-->
+<!--    <ImageView-->
+<!--        android:id="@+id/photo_iv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_marginTop="6dp" />-->
+<!--&lt;!&ndash;上传的图片会显示在这里&ndash;&gt;-->
+<!--    <ImageView-->
+<!--        android:id="@+id/camere_iv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        />-->
 <!--理论上是开始测试的按钮，点了会跳转到测试界面。-->
 <!--但是不知道为啥，上传图片后软件会自动跳转，点这个按钮反而会闪退。-->
 <!--后端代码对这个button设置了依赖，所以没有删除这个按钮，只是把它设置为invisible。    -->
