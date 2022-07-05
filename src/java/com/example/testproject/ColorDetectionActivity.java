@@ -52,6 +52,9 @@ public class ColorDetectionActivity extends CameraActivity implements View.OnTou
     private Uri                  uri_buff;
     private boolean              detect_mode;
     private Bitmap               img_bitmap;
+    private Intent               cIntent;
+    private Intent               mIntent;
+    private String               colorname="";
 
     /** Initialize OpenCV */
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -188,7 +191,12 @@ public class ColorDetectionActivity extends CameraActivity implements View.OnTou
             RTextView.setText("R = " + String.valueOf(PixelR));
             GTextView.setText( "G = " + String.valueOf(PixelG));
             BTextView.setText( "B = " + String.valueOf(PixelB));
-            ColorNameTextView.setText("Pixel Color: " + GetColorName.getColorFromRGB(PixelR, PixelG, PixelB));
+            String colorname = GetColorName.getColorFromRGB(PixelR, PixelG, PixelB);
+            cIntent = new Intent();
+            cIntent.putExtra("colorname", colorname);
+            cIntent.setClass(ColorDetectionActivity.this, DetailActivity.class);
+//            startActivity(cIntent);
+            ColorNameTextView.setText("This color is: " + colorname);
         } else {
             Log.i("Current detect mode","blob");
             // a small square area, with the touched point as the center
@@ -216,8 +224,12 @@ public class ColorDetectionActivity extends CameraActivity implements View.OnTou
             RTextView.setText("R = " + String.valueOf((int)mBlobColorRgba.val[0]));
             GTextView.setText( "G = " + String.valueOf((int)mBlobColorRgba.val[1]));
             BTextView.setText( "B = " + String.valueOf((int)mBlobColorRgba.val[2]));
-            ColorNameTextView.setText("Blob Color: " + GetColorName.getColorFromRGB
-                    ((int)mBlobColorRgba.val[0], (int)mBlobColorRgba.val[1], (int)mBlobColorRgba.val[2]));
+            String colorname =  GetColorName.getColorFromRGB((int)mBlobColorRgba.val[0], (int)mBlobColorRgba.val[1], (int)mBlobColorRgba.val[2]);
+            Intent cIntent = new Intent();
+            cIntent.putExtra("colorname", colorname);
+            cIntent.setClass(ColorDetectionActivity.this, DetailActivity.class);
+//            startActivity(cIntent);
+            ColorNameTextView.setText("This color is: " + colorname);
 
             // display color blob contour
             Log.i("Camera", "begin setting detector");
@@ -272,10 +284,18 @@ public class ColorDetectionActivity extends CameraActivity implements View.OnTou
     }
 
     public void startDetail(View view){
-        startActivity(new Intent(this, DetailActivity.class));
+        if (colorname!="") {
+            startActivity(cIntent);
+        } else {
+            startActivity(new Intent(this, EmptyActivity.class));
+        }
     }
 
     public void startMain(View view){
         startActivity(new Intent(this, MainPage.class));
+    }
+
+    public void startFeedback(View view){
+        startActivity(new Intent(this, Feedback.class));
     }
 }
