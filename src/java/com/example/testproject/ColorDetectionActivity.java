@@ -191,7 +191,7 @@ public class ColorDetectionActivity extends CameraActivity implements View.OnTou
             RTextView.setText("R = " + String.valueOf(PixelR));
             GTextView.setText( "G = " + String.valueOf(PixelG));
             BTextView.setText( "B = " + String.valueOf(PixelB));
-            String colorname = GetColorName.getColorFromRGB(PixelR, PixelG, PixelB);
+            colorname = GetColorName.getColorFromRGB(PixelR, PixelG, PixelB);
             cIntent = new Intent();
             cIntent.putExtra("colorname", colorname);
             cIntent.setClass(ColorDetectionActivity.this, DetailActivity.class);
@@ -224,7 +224,7 @@ public class ColorDetectionActivity extends CameraActivity implements View.OnTou
             RTextView.setText("R = " + String.valueOf((int)mBlobColorRgba.val[0]));
             GTextView.setText( "G = " + String.valueOf((int)mBlobColorRgba.val[1]));
             BTextView.setText( "B = " + String.valueOf((int)mBlobColorRgba.val[2]));
-            String colorname =  GetColorName.getColorFromRGB((int)mBlobColorRgba.val[0], (int)mBlobColorRgba.val[1], (int)mBlobColorRgba.val[2]);
+            colorname =  GetColorName.getColorFromRGB((int)mBlobColorRgba.val[0], (int)mBlobColorRgba.val[1], (int)mBlobColorRgba.val[2]);
             Intent cIntent = new Intent();
             cIntent.putExtra("colorname", colorname);
             cIntent.setClass(ColorDetectionActivity.this, DetailActivity.class);
