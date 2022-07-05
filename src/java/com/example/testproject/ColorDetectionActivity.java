@@ -18,6 +18,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton;
 
@@ -42,6 +44,7 @@ public class ColorDetectionActivity extends CameraActivity implements View.OnTou
     private Size                 SPECTRUM_SIZE;
     private Scalar               CONTOUR_COLOR;
 
+    private TextView             color_detection_title;
     private ToggleButton         mode_switch_button;
     private Mat                  sample_img;
     private ImageView            sample_img_view;
@@ -97,6 +100,8 @@ public class ColorDetectionActivity extends CameraActivity implements View.OnTou
         sample_img_view = findViewById(R.id.sample_img_view);
         sample_img_view.setOnTouchListener(ColorDetectionActivity.this);
 
+        color_detection_title = findViewById(R.id.color_detection_title);
+        color_detection_title.setTypeface(Typeface.createFromAsset(getAssets(), "TCM_____.TTF"));
         mode_switch_button = findViewById(R.id.mode_switch);
 
         mode_switch_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
