@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ColorDetectionActivity">
+<!--测试界面。不要修改模块的id-->
+<!--顶上那个蓝色的条，写着“Rainbow”    -->
+<!--没任何互动效果，纯装饰。可以随便修改    -->
+    <TextView
+        android:id="@+id/color_detection_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Color Detection"
+        android:textSize="25sp"
+        android:textColor="#ffffff"
+        android:background="#ff0099cc"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="10dp"/>
+<!--切换检测模式的按钮-->
+    <ToggleButton
+        android:id="@+id/mode_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="15dp"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:background="#dddddd"
+        android:textOff="mode: pixel detection"
+        android:textOn="mode: blob detection"
+        android:textSize="20sp"
+        android:checked="false"/>
+<!--显示检测图片的模块。要用户上传文件之后才有图-->
+    <ImageView
+        android:id="@+id/sample_img_view"
+        android:layout_width="300dp"
+        android:layout_height="320dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitCenter"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="30dp"
+        android:adjustViewBounds="true"
+        android:focusable="true"/>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/sample_img_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/camere_iv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        />-->
+
+<!--显示检测颜色的名字-->
+    <TextView
+        android:id="@+id/pixel_color_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        android:text="This color is: ---"
+        android:textSize="20sp"
+        android:textColor="#000000"/>
+<!--以下三个模块分别显示颜色的RGB-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
+        <TextView
+            android:id="@+id/pixel_r_value"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:text="R: ---"
+            android:textSize="20sp"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/pixel_g_value"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:text="G: ---"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/pixel_b_value"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:text="B: ---"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+<!--跳转到detail页面（色相环页面）的按钮    -->
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:background="#dddddd"
+            android:onClick="startDetail"
+            android:text="Detail"
+            android:textSize="18sp"/>
+<!--让用户返回至MainPage重新上传图片的按钮-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="5dp"
+        android:background="#dddddd"
+        android:onClick="startMain"
+        android:text="Re-upload"
+        android:textSize="18sp"
+        />
+    </LinearLayout>
+
+</LinearLayout>
