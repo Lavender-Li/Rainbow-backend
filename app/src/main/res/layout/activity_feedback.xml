@@ -132,6 +132,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="  Backend "
                 android:textSize="20sp"
                 android:textColor="#444444"/>
@@ -262,7 +263,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
-        android:text="    For more details, go to our github page: "
+        android:text="For more details, go to our github page: "
         android:textSize="16sp"
         android:textColor="#000000"
         />
@@ -270,7 +271,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="https://github.com/Lavender-Li/Rainbow-alpha"
+        android:text="https://github.com/Lavender-Li/Rainbow-beta"
         android:layout_gravity="center_horizontal"
         android:textColor="#000000"
         android:textSize="15sp"
